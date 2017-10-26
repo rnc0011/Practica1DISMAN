@@ -1,8 +1,0 @@
-/**
- * 
- */
-/**
- * @author Rulo
- *
- */
-package gestor;
