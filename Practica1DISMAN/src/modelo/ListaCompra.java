@@ -6,10 +6,9 @@ import java.util.List;
 /**
  * Clase ListaCompra. Creamos la estructura de la lista de la compra.
  * 
- * @author RaÃºl Negro Carpintero
- * @author Mario NÃºÃ±ez Izquierdo
+ * @author Raúl Negro Carpintero
+ * @author Mario Núñez Izquierdo
  * @version 1.0
- *
  */
 public class ListaCompra {
 	
@@ -23,16 +22,16 @@ public class ListaCompra {
 	}
 	
 	/**
-	 * MÃ©todo aÃ±adir. AÃ±ade productos a la lista de la compra.
+	 * Método añadir. Añade productos a la lista de la compra.
 	 * 
 	 * @param producto
 	 */
-	private void añadir(Producto producto) {
+	private void anadir(Producto producto) {
 		this.lista.add(producto);
 	}
 	
 	/**
-	 * MÃ©todo eliminar. Elimina productos de la lista de la compra.
+	 * Método eliminar. Elimina productos de la lista de la compra.
 	 * 
 	 * @param producto
 	 */
@@ -43,7 +42,7 @@ public class ListaCompra {
 	}
 	
 	/**
-	 * Metodo getProducto, devuelve un producto igual al introducido por parametro.
+	 * Método getProducto, devuelve un producto igual al introducido por parametro.
 	 * 
 	 * @param producto
 	 */
@@ -53,7 +52,7 @@ public class ListaCompra {
 	}
 
 	/**
-	 * Metodo getProducto, devuelve el producto con el indice introducido.
+	 * Método getProducto, devuelve el producto con el indice introducido.
 	 * 
 	 * @param producto
 	 */
