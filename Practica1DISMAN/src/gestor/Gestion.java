@@ -16,10 +16,11 @@ public class Gestion {
 
 	}
 	
-	protected void anadirProducto(String nombre, int cantidad, float precio) {
+
+	protected static void anadirProducto(String nombre, int cantidad, float precio) {
 		Producto miProducto = new Producto(nombre, cantidad, precio);	
-		if(!this.nombresProducto.contains(miProducto)) {
-			this.listaProductos.anadir(miProducto);
+		if(!nombresProducto.contains(miProducto)) {
+			listaProductos.anadir(miProducto);
 		}else {
 			System.out.println("El producto " + miProducto.getNombre() + " ya esta en tu lista de la compra.");
 		}
