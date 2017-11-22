@@ -4,6 +4,7 @@
 package modelo;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -13,7 +14,7 @@ import java.util.List;
  * @author Mario Núñez Izquierdo
  * @version 1.0
  */
-public class ListaFavoritos {
+public class ListaFavoritos implements Iterable<String> {
 	
 	private List<String> miLista;
 	
@@ -57,6 +58,11 @@ public class ListaFavoritos {
 	
 	private String getProducto(int index) {
 		return this.miLista.get(index);
+	}
+
+	@Override
+	public Iterator iterator() {
+		return this.miLista.iterator();
 	}
 	
 	

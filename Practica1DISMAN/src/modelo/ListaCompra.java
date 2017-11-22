@@ -1,6 +1,7 @@
 package modelo;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -10,7 +11,7 @@ import java.util.List;
  * @author Mario Núñez Izquierdo
  * @version 1.0
  */
-public class ListaCompra {
+public class ListaCompra implements Iterable<Producto> {
 	
 	private List<Producto> miLista;
 	
@@ -59,5 +60,10 @@ public class ListaCompra {
 	
 	private Producto getProducto(int index) {
 		return this.miLista.get(index);
+	}
+
+	@Override
+	public Iterator<Producto> iterator() {
+		return this.miLista.iterator();
 	}
 }
