@@ -12,13 +12,13 @@ import java.util.List;
  */
 public class ListaCompra {
 	
-	private List<Producto> lista;
+	private List<Producto> miLista;
 	
 	/**
 	 * Constructor de la clase.
 	 */
 	public ListaCompra() {
-		this.lista = new ArrayList<Producto>();
+		this.miLista = new ArrayList<Producto>();
 	}
 	
 	/**
@@ -27,7 +27,7 @@ public class ListaCompra {
 	 * @param producto
 	 */
 	private void anadir(Producto producto) {
-		this.lista.add(producto);
+		this.miLista.add(producto);
 	}
 	
 	/**
@@ -36,8 +36,8 @@ public class ListaCompra {
 	 * @param producto
 	 */
 	private void eliminar(Producto producto) {
-		if(lista.size() != 0) {
-			this.lista.remove(producto);
+		if(miLista.size() != 0) {
+			this.miLista.remove(producto);
 		}
 	}
 	
@@ -48,7 +48,7 @@ public class ListaCompra {
 	 */
 	
 	private Producto getProducto(Producto producto) {
-		return this.lista.get(this.lista.indexOf(producto));
+		return this.miLista.get(this.miLista.indexOf(producto));
 	}
 
 	/**
@@ -58,6 +58,6 @@ public class ListaCompra {
 	 */
 	
 	private Producto getProducto(int index) {
-		return this.lista.get(index);
+		return this.miLista.get(index);
 	}
 }

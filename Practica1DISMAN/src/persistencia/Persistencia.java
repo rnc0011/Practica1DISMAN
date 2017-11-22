@@ -1,7 +1,7 @@
 /**
  * 
  */
-package gestor;
+package persistencia;
 
 /**
  * @author Rulo

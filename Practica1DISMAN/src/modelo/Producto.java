@@ -46,4 +46,8 @@ public class Producto {
 		this.cantidad=nuevaC;
 	}
 	
+	protected String getNombre() {
+		return this.nombre;
+	}
+	
 }
