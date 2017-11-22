@@ -32,7 +32,7 @@ public class Producto {
 	 * Método productoComprado. Utilizado para marcar un producto como comprado.
 	 * 
 	 */
-	protected void productoComprado() {
+	public void productoComprado() {
 		this.comprado = true;
 	}
 	
@@ -42,11 +42,11 @@ public class Producto {
 	 * @param nuevaC Nueva cantidad
 	 */
 	
-	private void modificarCantidad(int nuevaC) {
+	public void modificarCantidad(int nuevaC) {
 		this.cantidad=nuevaC;
 	}
 	
-	protected String getNombre() {
+	public String getNombre() {
 		return this.nombre;
 	}
 	

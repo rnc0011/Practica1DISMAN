@@ -27,7 +27,7 @@ public class ListaCompra implements Iterable<Producto> {
 	 * 
 	 * @param producto
 	 */
-	private void anadir(Producto producto) {
+	public void anadir(Producto producto) {
 		this.miLista.add(producto);
 	}
 	
@@ -36,7 +36,7 @@ public class ListaCompra implements Iterable<Producto> {
 	 * 
 	 * @param producto
 	 */
-	private void eliminar(Producto producto) {
+	public void eliminar(Producto producto) {
 		if(miLista.size() != 0) {
 			this.miLista.remove(producto);
 		}
@@ -48,7 +48,7 @@ public class ListaCompra implements Iterable<Producto> {
 	 * @param producto
 	 */
 	
-	private Producto getProducto(Producto producto) {
+	public Producto getProducto(Producto producto) {
 		return this.miLista.get(this.miLista.indexOf(producto));
 	}
 
@@ -58,7 +58,7 @@ public class ListaCompra implements Iterable<Producto> {
 	 * @param producto
 	 */
 	
-	private Producto getProducto(int index) {
+	public Producto getProducto(int index) {
 		return this.miLista.get(index);
 	}
 
