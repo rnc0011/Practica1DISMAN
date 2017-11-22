@@ -7,19 +7,23 @@ public class Gestion {
 
 	}
 	
-	protected void anadirProducto(String nombre, int cantidad, float precio) {
+	static void anadirProducto(String nombre, int cantidad, float precio) {
 		
 	}
 	
-	protected void eliminarProducto(String nombre) {
+	static void eliminarProducto(String nombre) {
 		
 	}
 	
-	protected void modificarCantidad(String nombreProducto, int cantidad) {
+	static void modificarCantidad(String nombreProducto, int cantidad) {
 		
 	}
 	
-	protected void marcarComprado(String nombre) {
+	static void marcarComprado(String nombre) {
+		
+	}
+	
+	static void guardarLista() {
 		
 	}
 
