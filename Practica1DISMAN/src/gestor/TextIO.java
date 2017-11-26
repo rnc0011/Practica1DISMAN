@@ -14,6 +14,9 @@ import java.util.Scanner;
  */
 public class TextIO {
 
+	/**
+	 * Constructor de la clase.
+	 */
 	public TextIO() {
         pintarMenu();
         String opcion = "";
@@ -23,6 +26,9 @@ public class TextIO {
         entrada.close();
     }
 
+	/**
+	 * Método pintarMenu. Muestra las opciones iniciales al usuario.
+	 */
     public void pintarMenu() {
         System.out.println("*******Lista de la compra*******");
         System.out.println("¿Qué quiere hacer? (Introduzca el número de la opción)");
@@ -33,6 +39,11 @@ public class TextIO {
         System.out.println("5.- Guardar la lista y salir");
     }
 
+    /**
+     * Método menu. Muestra y realiza las subacciones del menú.
+     * 
+     * @param opcion
+     */
     public void menu(String opcion) {
         String nombre = "";
         int cantidad = 0;
@@ -72,11 +83,11 @@ public class TextIO {
             Gestion.marcarComprado(nombre);
         }
 
-        if(opcion.equals("5")) {
+        /*if(opcion.equals("5")) {
             Gestion.guardarLista();
             System.out.println("La lista se ha guardado");
             System.out.println("Saliendo...");
-        }
+        }*/
         
         entrada.close();
     }

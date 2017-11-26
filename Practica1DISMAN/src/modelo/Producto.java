@@ -9,6 +9,7 @@ package modelo;
  */
 public class Producto {
 	
+	//Declaración de variables
 	private String nombre;
 	private int cantidad;
 	private float precio;
@@ -43,7 +44,7 @@ public class Producto {
 	 */
 	
 	public void modificarCantidad(int nuevaC) {
-		this.cantidad=nuevaC;
+		this.cantidad = nuevaC;
 	}
 	
 	public String getNombre() {

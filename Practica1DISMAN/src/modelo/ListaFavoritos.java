@@ -16,6 +16,7 @@ import java.util.List;
  */
 public class ListaFavoritos implements Iterable<String> {
 	
+	//Declaración de variables
 	private List<String> miLista;
 	
 	/**
@@ -26,7 +27,7 @@ public class ListaFavoritos implements Iterable<String> {
 	}
 	
 	/**
-	 * Método añadir. Añade productos a la lista de la compra.
+	 * Método anadir. Añade productos a la lista de la compra.
 	 * 
 	 * @param producto
 	 */
@@ -51,7 +52,7 @@ public class ListaFavoritos implements Iterable<String> {
 	}
 
 	/**
-	 * Método getProducto, devuelve el producto con el indice introducido.
+	 * Método getProducto. Devuelve el producto con el índice introducido.
 	 * 
 	 * @param producto
 	 */

@@ -13,6 +13,7 @@ import java.util.List;
  */
 public class ListaCompra implements Iterable<Producto> {
 	
+	//Declaración de variables
 	private List<Producto> miLista;
 	
 	/**
@@ -43,7 +44,7 @@ public class ListaCompra implements Iterable<Producto> {
 	}
 	
 	/**
-	 * Método getProducto, devuelve un producto igual al introducido por parametro.
+	 * Método getProducto. Devuelve un producto igual al introducido por parámetro.
 	 * 
 	 * @param producto
 	 */
@@ -53,7 +54,7 @@ public class ListaCompra implements Iterable<Producto> {
 	}
 
 	/**
-	 * Método getProducto, devuelve el producto con el indice introducido.
+	 * Método getProducto. Devuelve el producto con el índice introducido.
 	 * 
 	 * @param producto
 	 */
