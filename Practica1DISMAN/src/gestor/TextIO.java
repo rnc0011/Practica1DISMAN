@@ -13,18 +13,31 @@ import java.util.Scanner;
  * @version 1.0
  */
 public class TextIO {
+	
+	//String opcion;
 
 	/**
 	 * Constructor de la clase.
 	 */
 	public TextIO() {
-        pintarMenu();
-        String opcion = "";
+		/*pintarMenu();
         Scanner entrada = new Scanner(System.in);
-        opcion = entrada.nextLine();
+        this.opcion = entrada.nextLine();
         menu(opcion);
-        entrada.close();
+	    entrada.close();*/
     }
+	
+	public void ejecutar() {
+		pintarMenu();
+		Scanner entrada = new Scanner(System.in);
+		String opcion = entrada.nextLine();
+		while(!opcion.equals("0")) {
+			menu(opcion);
+			opcion = entrada.nextLine();
+			pintarMenu();
+		}
+		entrada.close();
+	}
 
 	/**
 	 * Método pintarMenu. Muestra las opciones iniciales al usuario.
@@ -36,7 +49,7 @@ public class TextIO {
         System.out.println("2.- Eliminar productos de la lista");
         System.out.println("3.- Cambiar la cantidad de un producto de la lista");
         System.out.println("4.- Marcar productos de la lista como comprados");
-        System.out.println("5.- Guardar la lista y salir");
+        System.out.println("0.- Guardar la lista y salir");
     }
 
     /**
@@ -83,11 +96,11 @@ public class TextIO {
             Gestion.marcarComprado(nombre);
         }
 
-        /*if(opcion.equals("5")) {
-            Gestion.guardarLista();
+        if(opcion.equals("0")) {
+            //Gestion.guardarLista();
             System.out.println("La lista se ha guardado");
             System.out.println("Saliendo...");
-        }*/
+        }
         
         entrada.close();
     }

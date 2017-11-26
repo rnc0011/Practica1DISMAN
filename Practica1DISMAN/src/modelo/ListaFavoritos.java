@@ -66,6 +66,4 @@ public class ListaFavoritos implements Iterable<String> {
 		return this.miLista.iterator();
 	}
 	
-	
-
 }

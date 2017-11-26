@@ -67,4 +67,5 @@ public class ListaCompra implements Iterable<Producto> {
 	public Iterator<Producto> iterator() {
 		return this.miLista.iterator();
 	}
+	
 }
