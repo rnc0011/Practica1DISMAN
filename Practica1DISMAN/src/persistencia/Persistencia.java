@@ -67,25 +67,31 @@ public class Persistencia {
 	 * @param listaCompra
 	 */
 	public static void importar(ListaCompra listaCompra) {
-		
-		try {
+	
+		boolean existe = new File(direccion).exists();
+
+		if(existe) {
 			
-			CsvReader fichero = new CsvReader(direccion);
-			
-			while(fichero.readRecord()) {
-				String nombre = fichero.get(0);
-				String cantidad = fichero.get(1);
-				String precio = fichero.get(2);
-				Producto producto = new Producto(nombre, Integer.parseInt(cantidad), Float.parseFloat(precio));
-				listaCompra.anadir(producto);
+			try {
+				
+				CsvReader fichero = new CsvReader(direccion);
+				
+				while(fichero.readRecord()) {
+					String nombre = fichero.get(0);
+					String cantidad = fichero.get(1);
+					String precio = fichero.get(2);
+					Producto producto = new Producto(nombre, Integer.parseInt(cantidad), Float.parseFloat(precio));
+					listaCompra.anadir(producto);
+				}
+				
+				fichero.close();
+				
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
 			}
-			
-			fichero.close();
-			
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
+		
 		}
 	}
 	

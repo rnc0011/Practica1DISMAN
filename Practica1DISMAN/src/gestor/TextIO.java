@@ -3,6 +3,7 @@
  */
 package gestor;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -24,7 +25,7 @@ public class TextIO {
 	/**
 	 * Método ejecutar. Pinta el menú y pide por teclado una opción.
 	 */
-	public void ejecutar() {
+	static public void ejecutar() {
 		pintarMenu();
 		Scanner entrada = new Scanner(System.in);
 		String opcion = entrada.nextLine();
@@ -35,7 +36,7 @@ public class TextIO {
 	/**
 	 * Método pintarMenu. Muestra las opciones iniciales al usuario.
 	 */
-    public void pintarMenu() {
+    static public void pintarMenu() {
         System.out.println("*******Lista de la compra*******");
         System.out.println("¿Qué quiere hacer? (Introduzca el número de la opción)");
         System.out.println("1.- Añadir productos a la lista");
@@ -51,22 +52,29 @@ public class TextIO {
      * 
      * @param opcion
      */
-    public void menu(String opcion) {
+    static public void menu(String opcion) {
         String nombre = "";
         int cantidad = 0;
         float precio = 0;
         Scanner entrada = new Scanner(System.in);
 
         if(opcion.equals("1")) {
-            System.out.println("Introduzca el nombre del producto");
-            nombre = entrada.nextLine();
-            System.out.println("Introduzca la cantidad del producto");
-            cantidad = entrada.nextInt();
-            System.out.println("Introduzca el precio del producto");
-            precio = entrada.nextFloat();
-            Gestion.anadirProducto(nombre, cantidad, precio);
-            System.out.println("");
-            ejecutar();
+        	try {
+        		
+	            System.out.println("Introduzca el nombre del producto");
+	            nombre = entrada.nextLine();
+	            System.out.println("Introduzca la cantidad del producto");
+	            cantidad = entrada.nextInt();
+	            System.out.println("Introduzca el precio del producto");
+	            precio = entrada.nextFloat();
+	            Gestion.anadirProducto(nombre, cantidad, precio);
+	            System.out.println("");
+	            ejecutar();
+         
+        	} catch (InputMismatchException e){
+        		System.err.println("Error en el ultimo dato intruducido.");
+        		ejecutar();
+        	}
         }
 
         if(opcion.equals("2")) {

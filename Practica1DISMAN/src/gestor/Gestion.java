@@ -20,13 +20,15 @@ public class Gestion {
 	 * @param args
 	 */
 	public static void main(String[] args) {
+		
 		Persistencia.importar(listaProductos);
 		Iterator<Producto> it = listaProductos.iterator();
+		
 		while(it.hasNext()) {
 			nombresProducto.add(it.next().getNombre());
 		}
-		TextIO text = new TextIO();
-		text.ejecutar();
+
+		TextIO.ejecutar();
 	}
 	
 	/**
