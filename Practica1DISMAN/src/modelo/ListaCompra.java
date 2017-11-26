@@ -42,30 +42,31 @@ public class ListaCompra implements Iterable<Producto> {
 			this.miLista.remove(producto);
 		}
 	}
-	
-	/**
-	 * Método getProducto. Devuelve un producto igual al introducido por parámetro.
-	 * 
-	 * @param producto
-	 */
-	
-	public Producto getProducto(Producto producto) {
-		return this.miLista.get(this.miLista.indexOf(producto));
-	}
-
-	/**
-	 * Método getProducto. Devuelve el producto con el índice introducido.
-	 * 
-	 * @param producto
-	 */
-	
-	public Producto getProducto(int index) {
-		return this.miLista.get(index);
-	}
 
 	@Override
 	public Iterator<Producto> iterator() {
 		return this.miLista.iterator();
+	}
+	
+	/**
+	 * Método size. Devuelve el tamaño de la lista de la compra.
+	 * 
+	 * @return tamaño de la lista
+	 */
+	public int size() {
+		return this.miLista.size();
+	}
+	
+	/**
+	 * Método pintarLista. Imprime los productos de la lista de la compra.
+	 */
+	public void pintarLista() {
+		Iterator<Producto> it = this.miLista.iterator();
+		Producto producto = null;
+		while(it.hasNext()) {
+			producto = it.next();
+			System.out.println("Nombre: " + producto.getNombre() + "  Cantidad: " + producto.getCantidad() + "  Precio: " + producto.getPrecio());
+		}
 	}
 	
 }

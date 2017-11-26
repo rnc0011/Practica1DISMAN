@@ -13,29 +13,22 @@ import java.util.Scanner;
  * @version 1.0
  */
 public class TextIO {
-	
-	//String opcion;
 
 	/**
 	 * Constructor de la clase.
 	 */
 	public TextIO() {
-		/*pintarMenu();
-        Scanner entrada = new Scanner(System.in);
-        this.opcion = entrada.nextLine();
-        menu(opcion);
-	    entrada.close();*/
+		
     }
 	
+	/**
+	 * Método ejecutar. Pinta el menú y pide por teclado una opción.
+	 */
 	public void ejecutar() {
 		pintarMenu();
 		Scanner entrada = new Scanner(System.in);
 		String opcion = entrada.nextLine();
-		while(!opcion.equals("0")) {
-			menu(opcion);
-			opcion = entrada.nextLine();
-			pintarMenu();
-		}
+		menu(opcion);
 		entrada.close();
 	}
 
@@ -49,6 +42,7 @@ public class TextIO {
         System.out.println("2.- Eliminar productos de la lista");
         System.out.println("3.- Cambiar la cantidad de un producto de la lista");
         System.out.println("4.- Marcar productos de la lista como comprados");
+        System.out.println("5.- Ver lista de la compra");
         System.out.println("0.- Guardar la lista y salir");
     }
 
@@ -71,33 +65,47 @@ public class TextIO {
             System.out.println("Introduzca el precio del producto");
             precio = entrada.nextFloat();
             Gestion.anadirProducto(nombre, cantidad, precio);
+            System.out.println("");
+            ejecutar();
         }
 
         if(opcion.equals("2")) {
             System.out.println("Introduzca el nombre del producto a eliminar");
-            //pintarProductos(lista);
+            Gestion.pintarLista();
             nombre = entrada.nextLine();
             Gestion.eliminarProducto(nombre);
+            System.out.println("");
+            ejecutar();
         }
 
         if(opcion.equals("3")) {
             System.out.println("Introduzca el nombre del producto del que quiere modificar la cantidad");
-            //pintarProductos(lista);
+            Gestion.pintarLista();
             nombre = entrada.nextLine();
             System.out.println("Introduzca la nueva cantidad");
             cantidad = entrada.nextInt();
             Gestion.modificarCantidad(nombre, cantidad);
+            System.out.println("");
+            ejecutar();
         }
 
         if(opcion.equals("4")) {
             System.out.println("Introduzca el nombre del producto que quiere marcar como comprado");
-            //pintarProductos(lista);
+            Gestion.pintarLista();
             nombre = entrada.nextLine();
             Gestion.marcarComprado(nombre);
+            System.out.println("");
+            ejecutar();
+        }
+        
+        if(opcion.equals("5")) {
+        		Gestion.pintarLista();
+        		System.out.println("");
+        		ejecutar();
         }
 
         if(opcion.equals("0")) {
-            //Gestion.guardarLista();
+            Gestion.guardarLista();
             System.out.println("La lista se ha guardado");
             System.out.println("Saliendo...");
         }

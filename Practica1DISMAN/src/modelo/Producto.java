@@ -13,7 +13,6 @@ public class Producto {
 	private String nombre;
 	private int cantidad;
 	private float precio;
-	private boolean comprado;
 	
 	/**
 	 * Constructor de la clase.
@@ -26,15 +25,6 @@ public class Producto {
 		this.nombre = nombre;
 		this.cantidad = cantidad;
 		this.precio = precio;
-		this.comprado = false;
-	}
-	
-	/**
-	 * Método productoComprado. Utilizado para marcar un producto como comprado.
-	 * 
-	 */
-	public void productoComprado() {
-		this.comprado = true;
 	}
 	
 	/**
@@ -47,8 +37,31 @@ public class Producto {
 		this.cantidad = nuevaC;
 	}
 	
+	/**
+	 * Método getNombre. Devuelve el nombre del producto.
+	 * 
+	 * @return nombre
+	 */
 	public String getNombre() {
 		return this.nombre;
+	}
+	
+	/**
+	 * Método getCantidad. Devuelve la cantidad del producto.
+	 * 
+	 * @return cantidad
+	 */
+	public int getCantidad() {
+		return this.cantidad;
+	}
+	
+	/**
+	 * Método getPrecio. Devuelve el precio del producto.
+	 * 
+	 * @return precio
+	 */
+	public float getPrecio() {
+		return this.precio;
 	}
 	
 }
