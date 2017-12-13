@@ -133,14 +133,12 @@ public class Gestion {
 	}
 
 	/**
-	 * Método pintarLista(). Imprime los productos de la lista de la compra.
+	 * Método devolverLista(). Devuelve la lista de la compra.
+	 * 
+	 * @return listaProductos
 	 */
-	protected static void pintarLista() {
-		if (listaProductos.size() == 0) {
-			System.out.println("La lista de la compra está vacía");
-		} else {
-			listaProductos.pintarLista();
-		}
+	protected static ListaCompra devolverLista() {
+		return listaProductos;
 	}
 
 	/**

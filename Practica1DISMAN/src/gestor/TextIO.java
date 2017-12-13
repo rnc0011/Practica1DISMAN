@@ -4,7 +4,11 @@
 package gestor;
 
 import java.util.InputMismatchException;
+import java.util.Iterator;
 import java.util.Scanner;
+
+import modelo.ListaCompra;
+import modelo.Producto;
 
 /**
  * Clase TextIO. Se encarga de imprimir el menú.
@@ -14,6 +18,9 @@ import java.util.Scanner;
  * @version 1.0
  */
 public class TextIO {
+	
+	//Declaración de variables
+	private static ListaCompra lista = new ListaCompra();
 
 	/**
 	 * Constructor de la clase.
@@ -27,6 +34,7 @@ public class TextIO {
 	 */
 	static public void ejecutar() {
 		pintarMenu();
+		cogerLista();
 		Scanner entrada = new Scanner(System.in);
 		String opcion = entrada.nextLine();
 		menu(opcion);
@@ -79,7 +87,7 @@ public class TextIO {
 
         if(opcion.equals("2")) {
             System.out.println("Introduzca el nombre del producto a eliminar");
-            Gestion.pintarLista();
+            pintarLista();
             nombre = entrada.nextLine();
             Gestion.eliminarProducto(nombre);
             System.out.println("");
@@ -88,7 +96,7 @@ public class TextIO {
 
         if(opcion.equals("3")) {
             System.out.println("Introduzca el nombre del producto del que quiere modificar la cantidad");
-            Gestion.pintarLista();
+            pintarLista();
             nombre = entrada.nextLine();
             System.out.println("Introduzca la nueva cantidad");
             cantidad = entrada.nextInt();
@@ -99,7 +107,7 @@ public class TextIO {
 
         if(opcion.equals("4")) {
             System.out.println("Introduzca el nombre del producto que quiere marcar como comprado");
-            Gestion.pintarLista();
+            pintarLista();
             nombre = entrada.nextLine();
             Gestion.marcarComprado(nombre);
             System.out.println("");
@@ -107,7 +115,7 @@ public class TextIO {
         }
         
         if(opcion.equals("5")) {
-        		Gestion.pintarLista();
+        		pintarLista();
         		System.out.println("");
         		ejecutar();
         }
@@ -120,5 +128,24 @@ public class TextIO {
         
         entrada.close();
     }
+    
+    /**
+	 * Método cogerLista. Guarda la lista de la compra para poder imprimirla después.
+	 */
+	public static void cogerLista() {
+		lista = Gestion.devolverLista();
+	}
+    
+    /**
+	 * Método pintarLista. Imprime los productos de la lista de la compra.
+	 */
+	public static void pintarLista() {
+		Iterator<Producto> it = lista.iterator();
+		Producto producto = null;
+		while(it.hasNext()) {
+			producto = it.next();
+			System.out.println("Nombre: " + producto.getNombre() + "  Cantidad: " + producto.getCantidad() + "  Precio: " + producto.getPrecio());
+		}
+	}
 	
 }

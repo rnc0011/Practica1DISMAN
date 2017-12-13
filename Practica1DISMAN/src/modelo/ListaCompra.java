@@ -57,16 +57,4 @@ public class ListaCompra implements Iterable<Producto> {
 		return this.miLista.size();
 	}
 	
-	/**
-	 * Método pintarLista. Imprime los productos de la lista de la compra.
-	 */
-	public void pintarLista() {
-		Iterator<Producto> it = this.miLista.iterator();
-		Producto producto = null;
-		while(it.hasNext()) {
-			producto = it.next();
-			System.out.println("Nombre: " + producto.getNombre() + "  Cantidad: " + producto.getCantidad() + "  Precio: " + producto.getPrecio());
-		}
-	}
-	
 }
