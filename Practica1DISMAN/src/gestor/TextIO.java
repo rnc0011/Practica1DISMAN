@@ -3,8 +3,10 @@
  */
 package gestor;
 
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Scanner;
 
 import modelo.ListaCompra;
@@ -21,6 +23,7 @@ public class TextIO {
 	
 	//Declaración de variables
 	private static ListaCompra lista = new ListaCompra();
+	private static List<String> nombres = new ArrayList<String>();
 	
 	/**
 	 * Método ejecutar. Pinta el menú y pide por teclado una opción.
@@ -28,6 +31,7 @@ public class TextIO {
 	static public void ejecutar() {
 		pintarMenu();
 		cogerLista();
+		cogerNombres();
 		Scanner entrada = new Scanner(System.in);
 		String opcion = entrada.nextLine();
 		menu(opcion);
@@ -60,29 +64,39 @@ public class TextIO {
         Scanner entrada = new Scanner(System.in);
 
         if(opcion.equals("1")) {
-        	try {
-        		
-	            System.out.println("Introduzca el nombre del producto");
-	            nombre = entrada.nextLine();
-	            System.out.println("Introduzca la cantidad del producto");
-	            cantidad = entrada.nextInt();
-	            System.out.println("Introduzca el precio del producto");
-	            precio = entrada.nextFloat();
-	            Gestion.anadirProducto(nombre, cantidad, precio);
-	            System.out.println("");
-	            ejecutar();
-         
-        	} catch (InputMismatchException e){
-        		System.err.println("Error en el ultimo dato intruducido.");
-        		ejecutar();
-        	}
+	        	try {
+	        		
+		            System.out.println("Introduzca el nombre del producto");
+		            nombre = entrada.nextLine();
+		            if(!nombres.contains(nombre)) {
+		            		System.out.println("Introduzca la cantidad del producto");
+			            cantidad = entrada.nextInt();
+			            System.out.println("Introduzca el precio del producto");
+			            precio = entrada.nextFloat();
+			            Gestion.anadirProducto(nombre, cantidad, precio);
+	            			System.out.println("El producto " + nombre + " se ha añadido a su lista de la compra.");
+		            } else {
+		            		System.out.println("El producto " + nombre + " ya está en su lista de la compra.");
+		            }
+		            System.out.println("");
+		            ejecutar();
+	         
+	        	} catch (InputMismatchException e){
+	        		System.err.println("Error en el ultimo dato intruducido.");
+	        		ejecutar();
+	        	}
         }
 
         if(opcion.equals("2")) {
             System.out.println("Introduzca el nombre del producto a eliminar");
             pintarLista();
             nombre = entrada.nextLine();
-            Gestion.eliminarProducto(nombre);
+            if(nombres.contains(nombre)) {
+            		Gestion.eliminarProducto(nombre);
+            		System.out.println("El producto " + nombre + " se ha eliminado de su lista de la compra.");
+            } else {
+            		System.out.println("El producto " + nombre + " no existe.");
+            }
             System.out.println("");
             ejecutar();
         }
@@ -91,9 +105,14 @@ public class TextIO {
             System.out.println("Introduzca el nombre del producto del que quiere modificar la cantidad");
             pintarLista();
             nombre = entrada.nextLine();
-            System.out.println("Introduzca la nueva cantidad");
-            cantidad = entrada.nextInt();
-            Gestion.modificarCantidad(nombre, cantidad);
+            if(nombres.contains(nombre)) {
+            		System.out.println("Introduzca la nueva cantidad");
+                cantidad = entrada.nextInt();
+                Gestion.modificarCantidad(nombre, cantidad);
+                System.out.println("La cantidad del producto " + nombre + " se ha modificado correctamente.");
+            } else {
+            		System.out.println("El producto " + nombre + " no está en su lista de la compra.");
+            }
             System.out.println("");
             ejecutar();
         }
@@ -102,7 +121,12 @@ public class TextIO {
             System.out.println("Introduzca el nombre del producto que quiere marcar como comprado");
             pintarLista();
             nombre = entrada.nextLine();
-            Gestion.marcarComprado(nombre);
+            if(nombres.contains(nombre)) {
+            		Gestion.marcarComprado(nombre);
+            		System.out.println("El producto " + nombre + " está ahora marcado como comprado.");
+            } else {
+            		System.out.println("El producto " + nombre + " no está en su lista de la compra.");
+            } 
             System.out.println("");
             ejecutar();
         }
@@ -127,6 +151,13 @@ public class TextIO {
 	 */
 	public static void cogerLista() {
 		lista = Gestion.devolverLista();
+	}
+	
+	/**
+	 * Método cogerNombres. Guarda la lista de los nombres.
+	 */
+	public static void cogerNombres() {
+		nombres = Gestion.devolverNombres();
 	}
     
     /**

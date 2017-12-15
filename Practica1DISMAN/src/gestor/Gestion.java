@@ -32,21 +32,16 @@ public class Gestion {
 	}
 
 	/**
-	 * Método anadirProducto. Aáde prodcutos a la lista de la compra.
+	 * Método anadirProducto. Añade prodcutos a la lista de la compra.
 	 * 
 	 * @param nombre
 	 * @param cantidad
 	 * @param precio
 	 */
 	protected static void anadirProducto(String nombre, int cantidad, float precio) {
-		if (!nombresProducto.contains(nombre)) {
-			Producto miProducto = new Producto(nombre, cantidad, precio);
-			listaProductos.anadir(miProducto);
-			nombresProducto.add(nombre);
-			System.out.println("El producto " + miProducto.getNombre() + " se ha añadido a su lista de la compra.");
-		} else {
-			System.out.println("El producto " + nombre + " ya está en su lista de la compra.");
-		}
+		Producto miProducto = new Producto(nombre, cantidad, precio);
+		listaProductos.anadir(miProducto);
+		nombresProducto.add(nombre);
 	}
 
 	/**
@@ -55,27 +50,19 @@ public class Gestion {
 	 * @param nombre
 	 */
 	protected static void eliminarProducto(String nombre) {
+		Producto producto = null;
+		Producto aux = null;
+		Iterator<Producto> it = listaProductos.iterator();
 
-		if (nombresProducto.contains(nombre)) {
-
-			Producto producto = null;
-			Producto aux = null;
-			Iterator<Producto> it = listaProductos.iterator();
-
-			while (it.hasNext()) {
-				aux = it.next();
-				if (aux.getNombre().equals(nombre)) {
-					producto = aux;
-				}
+		while (it.hasNext()) {
+			aux = it.next();
+			if (aux.getNombre().equals(nombre)) {
+				producto = aux;
 			}
-
-			listaProductos.eliminar(producto);
-			nombresProducto.remove(nombre);
-			System.out.println("El producto " + nombre + " se ha eliminado de su lista de la compra.");
-
-		} else {
-			System.out.println("El producto " + nombre + " no existe.");
 		}
+
+		listaProductos.eliminar(producto);
+		nombresProducto.remove(nombre);
 	}
 
 	/**
@@ -86,25 +73,20 @@ public class Gestion {
 	 * @param cantidad
 	 */
 	protected static void modificarCantidad(String nombreProducto, int cantidad) {
-		if (nombresProducto.contains(nombreProducto)) {
-			Iterator<Producto> it = listaProductos.iterator();
-			Producto producto = null;
-			Producto aux = null;
-			while (it.hasNext()) {
-				aux = it.next();
-				if (aux.getNombre().equals(nombreProducto)) {
-					producto = aux;
-				}
+		Iterator<Producto> it = listaProductos.iterator();
+		Producto producto = null;
+		Producto aux = null;
+		while (it.hasNext()) {
+			aux = it.next();
+			if (aux.getNombre().equals(nombreProducto)) {
+				producto = aux;
 			}
-			if (cantidad == 0) {
-				listaProductos.eliminar(producto);
-				nombresProducto.remove(nombreProducto);
-			} else {
-				producto.modificarCantidad(cantidad);
-			}
-			System.out.println("La cantidad del producto " + nombreProducto + " se ha modificado correctamente.");
+		}
+		if (cantidad == 0) {
+			listaProductos.eliminar(producto);
+			nombresProducto.remove(nombreProducto);
 		} else {
-			System.out.println("El producto " + nombreProducto + " no está en su lista de la compra.");
+			producto.modificarCantidad(cantidad);
 		}
 	}
 
@@ -114,22 +96,17 @@ public class Gestion {
 	 * @param nombre
 	 */
 	protected static void marcarComprado(String nombre) {
-		if (nombresProducto.contains(nombre)) {
-			Producto producto = null;
-			Producto aux = null;
-			Iterator<Producto> it = listaProductos.iterator();
-			while (it.hasNext()) {
-				aux = it.next();
-				if (aux.getNombre().equals(nombre)) {
-					producto = aux;
-				}
+		Producto producto = null;
+		Producto aux = null;
+		Iterator<Producto> it = listaProductos.iterator();
+		while (it.hasNext()) {
+			aux = it.next();
+			if (aux.getNombre().equals(nombre)) {
+				producto = aux;
 			}
-			listaProductos.eliminar(producto);
-			nombresProducto.remove(nombre);
-			System.out.println("El producto " + nombre + " está ahora marcado como comprado.");
-		} else {
-			System.out.println("El producto " + nombre + " no está en su lista de la compra.");
 		}
+		listaProductos.eliminar(producto);
+		nombresProducto.remove(nombre);
 	}
 
 	/**
@@ -139,6 +116,15 @@ public class Gestion {
 	 */
 	protected static ListaCompra devolverLista() {
 		return listaProductos;
+	}
+	
+	/**
+	 * Método devolverNombres(). Devuelve la lista con los nombres de los productos.
+	 * 
+	 * @return nombresProducto
+	 */
+	protected static List<String> devolverNombres() {
+		return nombresProducto;
 	}
 
 	/**
