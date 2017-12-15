@@ -1,7 +1,7 @@
 /**
  * 
  */
-package gestor;
+package interfaz;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -9,6 +9,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
+import gestor.Gestion;
 import modelo.ListaCompra;
 import modelo.Producto;
 

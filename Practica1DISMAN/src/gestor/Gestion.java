@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import interfaz.TextIO;
 import modelo.ListaCompra;
 import modelo.Producto;
 import persistencia.Persistencia;
@@ -38,7 +39,7 @@ public class Gestion {
 	 * @param cantidad
 	 * @param precio
 	 */
-	protected static void anadirProducto(String nombre, int cantidad, float precio) {
+	public static void anadirProducto(String nombre, int cantidad, float precio) {
 		Producto miProducto = new Producto(nombre, cantidad, precio);
 		listaProductos.anadir(miProducto);
 		nombresProducto.add(nombre);
@@ -49,7 +50,7 @@ public class Gestion {
 	 * 
 	 * @param nombre
 	 */
-	protected static void eliminarProducto(String nombre) {
+	public static void eliminarProducto(String nombre) {
 		Producto producto = null;
 		Producto aux = null;
 		Iterator<Producto> it = listaProductos.iterator();
@@ -72,7 +73,7 @@ public class Gestion {
 	 * @param nombreProducto
 	 * @param cantidad
 	 */
-	protected static void modificarCantidad(String nombreProducto, int cantidad) {
+	public static void modificarCantidad(String nombreProducto, int cantidad) {
 		Iterator<Producto> it = listaProductos.iterator();
 		Producto producto = null;
 		Producto aux = null;
@@ -95,7 +96,7 @@ public class Gestion {
 	 * 
 	 * @param nombre
 	 */
-	protected static void marcarComprado(String nombre) {
+	public static void marcarComprado(String nombre) {
 		Producto producto = null;
 		Producto aux = null;
 		Iterator<Producto> it = listaProductos.iterator();
@@ -114,7 +115,7 @@ public class Gestion {
 	 * 
 	 * @return listaProductos
 	 */
-	protected static ListaCompra devolverLista() {
+	public static ListaCompra devolverLista() {
 		return listaProductos;
 	}
 	
@@ -123,14 +124,14 @@ public class Gestion {
 	 * 
 	 * @return nombresProducto
 	 */
-	protected static List<String> devolverNombres() {
+	public static List<String> devolverNombres() {
 		return nombresProducto;
 	}
 
 	/**
 	 * Método guardarLista. Guarda la lista de la compra en un archivo csv.
 	 */
-	protected static void guardarLista() {
+	public static void guardarLista() {
 		Persistencia.exportar(listaProductos);
 	}
 
