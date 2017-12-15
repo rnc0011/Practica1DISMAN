@@ -21,13 +21,6 @@ public class TextIO {
 	
 	//Declaración de variables
 	private static ListaCompra lista = new ListaCompra();
-
-	/**
-	 * Constructor de la clase.
-	 */
-	public TextIO() {
-		
-    }
 	
 	/**
 	 * Método ejecutar. Pinta el menú y pide por teclado una opción.
