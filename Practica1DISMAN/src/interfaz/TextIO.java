@@ -21,11 +21,11 @@ import modelo.Producto;
  * @version 1.0
  */
 public class TextIO {
-	
-	//Declaración de variables
+
+	// Declaración de variables
 	private static ListaCompra lista = new ListaCompra();
 	private static List<String> nombres = new ArrayList<String>();
-	
+
 	/**
 	 * Método ejecutar. Pinta el menú y pide por teclado una opción.
 	 */
@@ -42,80 +42,83 @@ public class TextIO {
 	/**
 	 * Método pintarMenu. Muestra las opciones iniciales al usuario.
 	 */
-    static public void pintarMenu() {
-        System.out.println("*******Lista de la compra*******");
-        System.out.println("¿Qué quiere hacer? (Introduzca el número de la opción)");
-        System.out.println("1.- Añadir productos a la lista");
-        System.out.println("2.- Eliminar productos de la lista");
-        System.out.println("3.- Cambiar la cantidad de un producto de la lista");
-        System.out.println("4.- Marcar productos de la lista como comprados");
-        System.out.println("5.- Ver lista de la compra");
-        System.out.println("0.- Guardar la lista y salir");
-    }
+	static public void pintarMenu() {
+		System.out.println("*******Lista de la compra*******");
+		System.out.println("¿Qué quiere hacer? (Introduzca el número de la opción)");
+		System.out.println("1.- Añadir productos a la lista");
+		System.out.println("2.- Eliminar productos de la lista");
+		System.out.println("3.- Cambiar la cantidad de un producto de la lista");
+		System.out.println("4.- Marcar productos de la lista como comprados");
+		System.out.println("5.- Ver lista de la compra");
+		System.out.println("0.- Guardar la lista y salir");
+	}
 
-    /**
-     * Método menu. Muestra y realiza las subacciones del menú.
-     * 
-     * @param opcion
-     */
-    static public void menu(String opcion) {
-        String nombre = "";
-        int cantidad = 0;
-        float precio = 0;
-        Scanner entrada = new Scanner(System.in);
+	/**
+	 * Método menu. Muestra y realiza las subacciones del menú.
+	 * 
+	 * @param opcion
+	 */
+	static public void menu(String opcion) {
+		String nombre = "";
+		int cantidad = 0;
+		float precio = 0;
+		Scanner entrada = new Scanner(System.in);
 
-        switch(opcion) {
-        		case "1":
-        			anadirProductos(nombre, cantidad, precio, entrada);
-        			break;
-        		case "2":
-        			eliminarProductos(nombre, entrada);
-        			break;
-        		case "3":
-        			modificarCantidad(nombre, cantidad, entrada);
-        			break;
-        		case "4":
-        			marcarComprado(nombre, entrada);
-        			break;
-        		case "5":
-        			verLista();
-        			break;
-        		case "0":
-        			guardarSalir();
-        			break;
-        }
-        
-        entrada.close();
-    }
-    
-    /**
-	 * Método cogerLista. Guarda la lista de la compra para poder imprimirla después.
+		switch (opcion) {
+		case "1":
+			anadirProductos(nombre, cantidad, precio, entrada);
+			break;
+		case "2":
+			eliminarProductos(nombre, entrada);
+			break;
+		case "3":
+			modificarCantidad(nombre, cantidad, entrada);
+			break;
+		case "4":
+			marcarComprado(nombre, entrada);
+			break;
+		case "5":
+			verLista();
+			break;
+		case "0":
+			guardarSalir();
+			break;
+		}
+
+		entrada.close();
+	}
+
+	/**
+	 * Método cogerLista. Guarda la lista de la compra para poder imprimirla
+	 * después.
 	 */
 	public static void cogerLista() {
 		lista = Gestion.devolverLista();
 	}
-	
+
 	/**
 	 * Método cogerNombres. Guarda la lista de los nombres.
 	 */
 	public static void cogerNombres() {
 		nombres = Gestion.devolverNombres();
 	}
-    
-    /**
+
+	/**
 	 * Método pintarLista. Imprime los productos de la lista de la compra.
 	 */
 	public static void pintarLista() {
 		Iterator<Producto> it = lista.iterator();
 		Producto producto = null;
-		while(it.hasNext()) {
+		while (it.hasNext()) {
 			producto = it.next();
-			System.out.println("Nombre: " + producto.getNombre() + "  Cantidad: " + producto.getCantidad() + "  Precio: " + producto.getPrecio());
+			System.out.println("Nombre: " + producto.getNombre() + "  Cantidad: " + producto.getCantidad()
+					+ "  Precio: " + producto.getPrecio());
 		}
 	}
-	
+
 	/**
 	 * Método anadirProductos. Añade productos a la lista de la compra.
+	 * 
 	 * @param nombre
 	 * @param cantidad
 	 * @param precio
@@ -123,28 +126,28 @@ public class TextIO {
 	 */
 	public static void anadirProductos(String nombre, int cantidad, float precio, Scanner entrada) {
 		try {
-    		
-            System.out.println("Introduzca el nombre del producto");
-            nombre = entrada.nextLine();
-            if(!nombres.contains(nombre)) {
-            		System.out.println("Introduzca la cantidad del producto");
-	            cantidad = entrada.nextInt();
-	            System.out.println("Introduzca el precio del producto");
-	            precio = entrada.nextFloat();
-	            Gestion.anadirProducto(nombre, cantidad, precio);
-        			System.out.println("El producto " + nombre + " se ha añadido a su lista de la compra.");
-            } else {
-            		System.out.println("El producto " + nombre + " ya está en su lista de la compra.");
-            }
-            System.out.println("");
-            ejecutar();
-     
-	    	} catch (InputMismatchException e){
-	    		System.err.println("Error en el ultimo dato intruducido.");
-	    		ejecutar();
-	    	}
+
+			System.out.println("Introduzca el nombre del producto");
+			nombre = entrada.nextLine();
+			if (!nombres.contains(nombre)) {
+				System.out.println("Introduzca la cantidad del producto");
+				cantidad = entrada.nextInt();
+				System.out.println("Introduzca el precio del producto");
+				precio = entrada.nextFloat();
+				Gestion.anadirProducto(nombre, cantidad, precio);
+				System.out.println("El producto " + nombre + " se ha añadido a su lista de la compra.");
+			} else {
+				System.out.println("El producto " + nombre + " ya está en su lista de la compra.");
+			}
+			System.out.println("");
+			ejecutar();
+
+		} catch (InputMismatchException e) {
+			System.err.println("Error en el ultimo dato intruducido.");
+			ejecutar();
+		}
 	}
-	
+
 	/**
 	 * Método eliminarProductos. Elimina productos de la lista de la compra.
 	 * 
@@ -153,18 +156,18 @@ public class TextIO {
 	 */
 	public static void eliminarProductos(String nombre, Scanner entrada) {
 		System.out.println("Introduzca el nombre del producto a eliminar");
-        pintarLista();
-        nombre = entrada.nextLine();
-        if(nombres.contains(nombre)) {
-        		Gestion.eliminarProducto(nombre);
-        		System.out.println("El producto " + nombre + " se ha eliminado de su lista de la compra.");
-        } else {
-        		System.out.println("El producto " + nombre + " no existe.");
-        }
-        System.out.println("");
-        ejecutar();
+		pintarLista();
+		nombre = entrada.nextLine();
+		if (nombres.contains(nombre)) {
+			Gestion.eliminarProducto(nombre);
+			System.out.println("El producto " + nombre + " se ha eliminado de su lista de la compra.");
+		} else {
+			System.out.println("El producto " + nombre + " no existe.");
+		}
+		System.out.println("");
+		ejecutar();
 	}
-	
+
 	/**
 	 * Método modificarCantidad. Modifica la cantidad de productos.
 	 * 
@@ -174,20 +177,20 @@ public class TextIO {
 	 */
 	public static void modificarCantidad(String nombre, int cantidad, Scanner entrada) {
 		System.out.println("Introduzca el nombre del producto del que quiere modificar la cantidad");
-        pintarLista();
-        nombre = entrada.nextLine();
-        if(nombres.contains(nombre)) {
-        		System.out.println("Introduzca la nueva cantidad");
-            cantidad = entrada.nextInt();
-            Gestion.modificarCantidad(nombre, cantidad);
-            System.out.println("La cantidad del producto " + nombre + " se ha modificado correctamente.");
-        } else {
-        		System.out.println("El producto " + nombre + " no está en su lista de la compra.");
-        }
-        System.out.println("");
-        ejecutar();
+		pintarLista();
+		nombre = entrada.nextLine();
+		if (nombres.contains(nombre)) {
+			System.out.println("Introduzca la nueva cantidad");
+			cantidad = entrada.nextInt();
+			Gestion.modificarCantidad(nombre, cantidad);
+			System.out.println("La cantidad del producto " + nombre + " se ha modificado correctamente.");
+		} else {
+			System.out.println("El producto " + nombre + " no está en su lista de la compra.");
+		}
+		System.out.println("");
+		ejecutar();
 	}
-	
+
 	/**
 	 * Método marcarComprado. Marca un productos como comprados.
 	 * 
@@ -196,18 +199,18 @@ public class TextIO {
 	 */
 	public static void marcarComprado(String nombre, Scanner entrada) {
 		System.out.println("Introduzca el nombre del producto que quiere marcar como comprado");
-        pintarLista();
-        nombre = entrada.nextLine();
-        if(nombres.contains(nombre)) {
-        		Gestion.marcarComprado(nombre);
-        		System.out.println("El producto " + nombre + " está ahora marcado como comprado.");
-        } else {
-        		System.out.println("El producto " + nombre + " no está en su lista de la compra.");
-        } 
-        System.out.println("");
-        ejecutar();
+		pintarLista();
+		nombre = entrada.nextLine();
+		if (nombres.contains(nombre)) {
+			Gestion.marcarComprado(nombre);
+			System.out.println("El producto " + nombre + " está ahora marcado como comprado.");
+		} else {
+			System.out.println("El producto " + nombre + " no está en su lista de la compra.");
+		}
+		System.out.println("");
+		ejecutar();
 	}
-	
+
 	/**
 	 * Método verLista. Imprime la lista de la compra.
 	 */
@@ -216,14 +219,15 @@ public class TextIO {
 		System.out.println("");
 		ejecutar();
 	}
-	
+
 	/**
-	 * Método guardarSalir. Se encargar de guardar la lista de la compra y salir de la aplicación.
+	 * Método guardarSalir. Se encargar de guardar la lista de la compra y salir
+	 * de la aplicación.
 	 */
 	public static void guardarSalir() {
 		Gestion.guardarLista();
-        System.out.println("La lista se ha guardado");
-        System.out.println("Saliendo...");
+		System.out.println("La lista se ha guardado");
+		System.out.println("Saliendo...");
 	}
-	
+
 }
