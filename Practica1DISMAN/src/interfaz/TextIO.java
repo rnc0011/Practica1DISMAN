@@ -20,7 +20,7 @@ import modelo.Producto;
  * @author Mario Núñez Izquierdo
  * @version 1.0
  */
-public class TextIO {
+public class TextIO implements Interfaz{
 
 	// Declaración de variables
 	private static ListaCompra lista = new ListaCompra();
@@ -29,7 +29,7 @@ public class TextIO {
 	/**
 	 * Método ejecutar. Pinta el menú y pide por teclado una opción.
 	 */
-	static public void ejecutar() {
+	public void ejecutar() {
 		pintarMenu();
 		cogerLista();
 		cogerNombres();
@@ -42,7 +42,7 @@ public class TextIO {
 	/**
 	 * Método pintarMenu. Muestra las opciones iniciales al usuario.
 	 */
-	static public void pintarMenu() {
+	private void pintarMenu() {
 		System.out.println("*******Lista de la compra*******");
 		System.out.println("¿Qué quiere hacer? (Introduzca el número de la opción)");
 		System.out.println("1.- Añadir productos a la lista");
@@ -58,7 +58,7 @@ public class TextIO {
 	 * 
 	 * @param opcion
 	 */
-	static public void menu(String opcion) {
+	private void menu(String opcion) {
 		String nombre = "";
 		int cantidad = 0;
 		float precio = 0;
@@ -92,21 +92,21 @@ public class TextIO {
 	 * Método cogerLista. Guarda la lista de la compra para poder imprimirla
 	 * después.
 	 */
-	public static void cogerLista() {
+	private void cogerLista() {
 		lista = Gestion.devolverLista();
 	}
 
 	/**
 	 * Método cogerNombres. Guarda la lista de los nombres.
 	 */
-	public static void cogerNombres() {
+	private void cogerNombres() {
 		nombres = Gestion.devolverNombres();
 	}
 
 	/**
 	 * Método pintarLista. Imprime los productos de la lista de la compra.
 	 */
-	public static void pintarLista() {
+	private void pintarLista() {
 		Iterator<Producto> it = lista.iterator();
 		Producto producto = null;
 		while (it.hasNext()) {
@@ -124,7 +124,7 @@ public class TextIO {
 	 * @param precio
 	 * @param entrada
 	 */
-	public static void anadirProductos(String nombre, int cantidad, float precio, Scanner entrada) {
+	private void anadirProductos(String nombre, int cantidad, float precio, Scanner entrada) {
 		try {
 
 			System.out.println("Introduzca el nombre del producto");
@@ -154,7 +154,7 @@ public class TextIO {
 	 * @param nombre
 	 * @param entrada
 	 */
-	public static void eliminarProductos(String nombre, Scanner entrada) {
+	private void eliminarProductos(String nombre, Scanner entrada) {
 		System.out.println("Introduzca el nombre del producto a eliminar");
 		pintarLista();
 		nombre = entrada.nextLine();
@@ -175,7 +175,7 @@ public class TextIO {
 	 * @param cantidad
 	 * @param entrada
 	 */
-	public static void modificarCantidad(String nombre, int cantidad, Scanner entrada) {
+	private void modificarCantidad(String nombre, int cantidad, Scanner entrada) {
 		System.out.println("Introduzca el nombre del producto del que quiere modificar la cantidad");
 		pintarLista();
 		nombre = entrada.nextLine();
@@ -197,7 +197,7 @@ public class TextIO {
 	 * @param nombre
 	 * @param entrada
 	 */
-	public static void marcarComprado(String nombre, Scanner entrada) {
+	private void marcarComprado(String nombre, Scanner entrada) {
 		System.out.println("Introduzca el nombre del producto que quiere marcar como comprado");
 		pintarLista();
 		nombre = entrada.nextLine();
@@ -214,7 +214,7 @@ public class TextIO {
 	/**
 	 * Método verLista. Imprime la lista de la compra.
 	 */
-	public static void verLista() {
+	private void verLista() {
 		pintarLista();
 		System.out.println("");
 		ejecutar();

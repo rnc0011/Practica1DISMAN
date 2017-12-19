@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import interfaz.Interfaz;
 import interfaz.TextIO;
 import modelo.ListaCompra;
 import modelo.Producto;
@@ -24,6 +25,7 @@ public class Gestion {
 	private static List<String> nombresProducto = new ArrayList<String>();
 	private static ListaCompra listaProductos = new ListaCompra();
 	private static Persistencia persistencia = new PersistenciaCSV();
+	private static Interfaz interfaz;
 
 	/**
 	 * Método main. Programa principal.
@@ -38,8 +40,14 @@ public class Gestion {
 		while (it.hasNext()) {
 			nombresProducto.add(it.next().getNombre());
 		}
+		
+		System.out.println("Elije el tipo de interfaz que quieres utilizar:");
+		System.out.println("1.- Interfaz modo texto.");
+		System.out.println("2.- Interfaz modo grafico.");
+		
+		//To-Do Recojer el imput del teclado e instanciar la variable "interfaz" segun la eleccion del usuario
 
-		TextIO.ejecutar();
+		interfaz.ejecutar();
 	}
 
 	/**
