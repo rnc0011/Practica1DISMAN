@@ -107,12 +107,16 @@ public class TextIO implements Interfaz{
 	 * Método pintarLista. Imprime los productos de la lista de la compra.
 	 */
 	private void pintarLista() {
-		Iterator<Producto> it = lista.iterator();
-		Producto producto = null;
-		while (it.hasNext()) {
-			producto = it.next();
-			System.out.println("Nombre: " + producto.getNombre() + "  Cantidad: " + producto.getCantidad()
-					+ "  Precio: " + producto.getPrecio());
+		if(lista.size() != 0) {
+			Iterator<Producto> it = lista.iterator();
+			Producto producto = null;
+			while (it.hasNext()) {
+				producto = it.next();
+				System.out.println("Nombre: " + producto.getNombre() + "  Cantidad: " + producto.getCantidad()
+						+ "  Precio: " + producto.getPrecio());
+			}
+		} else {
+			System.out.println("No hay productos en la lista de la compra.");
 		}
 	}
 

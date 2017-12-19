@@ -4,7 +4,9 @@ import java.util.ArrayList;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.Scanner;
 
+import interfaz.GraphicIO;
 import interfaz.Interfaz;
 import interfaz.TextIO;
 import modelo.ListaCompra;
@@ -45,9 +47,20 @@ public class Gestion {
 		System.out.println("1.- Interfaz modo texto.");
 		System.out.println("2.- Interfaz modo grafico.");
 		
-		//To-Do Recojer el imput del teclado e instanciar la variable "interfaz" segun la eleccion del usuario
+		Scanner entrada = new Scanner(System.in);
+		String opcion = entrada.nextLine();
+		
+		switch(opcion) {
+		case "1":
+			interfaz = new TextIO();
+			break;
+		case "2":
+			interfaz = new GraphicIO();
+			break;
+		}
 
 		interfaz.ejecutar();
+		entrada.close();
 	}
 
 	/**
