@@ -1,6 +1,7 @@
 package gestor;
 
 import java.util.ArrayList;
+
 import java.util.Iterator;
 import java.util.List;
 
@@ -8,12 +9,21 @@ import interfaz.TextIO;
 import modelo.ListaCompra;
 import modelo.Producto;
 import persistencia.Persistencia;
+import persistencia.PersistenciaCSV;
 
+/**
+ * Clase Gestion. Se encarga de gestionar la logica interna de la aplicacion.
+ * 
+ * @author Raúl Negro Carpintero
+ * @author Mario Núñez Izquierdo
+ * @version 1.0
+ */
 public class Gestion {
 
 	// Declaración de variables
 	private static List<String> nombresProducto = new ArrayList<String>();
 	private static ListaCompra listaProductos = new ListaCompra();
+	private static Persistencia persistencia = new PersistenciaCSV();
 
 	/**
 	 * Método main. Programa principal.
@@ -22,7 +32,7 @@ public class Gestion {
 	 */
 	public static void main(String[] args) {
 
-		Persistencia.importar(listaProductos);
+		persistencia.importar(listaProductos);
 		Iterator<Producto> it = listaProductos.iterator();
 
 		while (it.hasNext()) {
@@ -132,7 +142,7 @@ public class Gestion {
 	 * Método guardarLista. Guarda la lista de la compra en un archivo csv.
 	 */
 	public static void guardarLista() {
-		Persistencia.exportar(listaProductos);
+		persistencia.exportar(listaProductos);
 	}
 
 }
