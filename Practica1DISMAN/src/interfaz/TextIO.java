@@ -20,7 +20,7 @@ import modelo.Producto;
  * @author Mario Núñez Izquierdo
  * @version 1.0
  */
-public class TextIO implements Interfaz{
+public class TextIO implements Interfaz {
 
 	// Declaración de variables
 	private static ListaCompra lista = new ListaCompra();
@@ -107,7 +107,7 @@ public class TextIO implements Interfaz{
 	 * Método pintarLista. Imprime los productos de la lista de la compra.
 	 */
 	private void pintarLista() {
-		if(lista.size() != 0) {
+		if (lista.size() != 0) {
 			Iterator<Producto> it = lista.iterator();
 			Producto producto = null;
 			while (it.hasNext()) {
@@ -225,8 +225,8 @@ public class TextIO implements Interfaz{
 	}
 
 	/**
-	 * Método guardarSalir. Se encargar de guardar la lista de la compra y salir
-	 * de la aplicación.
+	 * Método guardarSalir. Se encargar de guardar la lista de la compra y salir de
+	 * la aplicación.
 	 */
 	public static void guardarSalir() {
 		Gestion.guardarLista();

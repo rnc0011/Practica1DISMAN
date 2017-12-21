@@ -8,12 +8,12 @@ package modelo;
  * @version 1.0
  */
 public class Producto {
-	
-	//Declaración de variables
+
+	// Declaración de variables
 	private String nombre;
 	private int cantidad;
 	private float precio;
-	
+
 	/**
 	 * Constructor de la clase.
 	 * 
@@ -26,17 +26,18 @@ public class Producto {
 		this.cantidad = cantidad;
 		this.precio = precio;
 	}
-	
+
 	/**
 	 * Metodo para modificar la cantidad del producto.
 	 * 
-	 * @param nuevaC Nueva cantidad
+	 * @param nuevaC
+	 *            Nueva cantidad
 	 */
-	
+
 	public void modificarCantidad(int nuevaC) {
 		this.cantidad = nuevaC;
 	}
-	
+
 	/**
 	 * Método getNombre. Devuelve el nombre del producto.
 	 * 
@@ -45,7 +46,7 @@ public class Producto {
 	public String getNombre() {
 		return this.nombre;
 	}
-	
+
 	/**
 	 * Método getCantidad. Devuelve la cantidad del producto.
 	 * 
@@ -54,7 +55,7 @@ public class Producto {
 	public int getCantidad() {
 		return this.cantidad;
 	}
-	
+
 	/**
 	 * Método getPrecio. Devuelve el precio del producto.
 	 * 
@@ -63,5 +64,5 @@ public class Producto {
 	public float getPrecio() {
 		return this.precio;
 	}
-	
+
 }

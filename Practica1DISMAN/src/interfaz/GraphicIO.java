@@ -47,7 +47,7 @@ public class GraphicIO extends Application implements Interfaz {
 	private void cogerNombres() {
 		nombres = Gestion.devolverNombres();
 	}
-	
+
 	/**
 	 * Método cogerFavoritos. Guarda la lista de favoritos.
 	 */
@@ -109,7 +109,7 @@ public class GraphicIO extends Application implements Interfaz {
 		boton4.setPadding(new Insets(10.0, 10.0, 10.0, 10.0));
 		boton4.setToggleGroup(group);
 		boton4.setOnAction(e -> this.primaryStage.setScene(comprarScene()));
-		
+
 		RadioButton boton5 = new RadioButton("Añadir favorito");
 		boton5.setPadding(new Insets(10.0, 10.0, 10.0, 10.0));
 		boton5.setToggleGroup(group);
@@ -144,16 +144,16 @@ public class GraphicIO extends Application implements Interfaz {
 		VBox root = new VBox();
 		root.setSpacing(10.0);
 		root.setPadding(new Insets(10.0, 10.0, 10.0, 10.0));
-		
+
 		HBox textForm = new HBox();
 		textForm.setSpacing(10.0);
 		textForm.setPadding(new Insets(10.0, 10.0, 10.0, 10.0));
 		textForm.setAlignment(Pos.CENTER_LEFT);
-		
+
 		Label fieldLabel = new Label("Favoritos:");
 		fieldLabel.setPrefWidth(150.0);
 		textForm.getChildren().addAll(fieldLabel);
-		
+
 		if (favoritos.size() != 0) {
 			Iterator<String> it = favoritos.iterator();
 			while (it.hasNext()) {
@@ -168,27 +168,28 @@ public class GraphicIO extends Application implements Interfaz {
 			noFavoritos.setPrefWidth(150.0);
 			textForm.getChildren().addAll(noFavoritos);
 		}
-			
+
 		Label nombre = new Label("Nombre:");
 		nombre.setPrefWidth(150.0);
 		TextField campoNombre = new TextField("Nombre");
 		campoNombre.setPrefWidth(150.0);
-		
+
 		Label cantidad = new Label("Cantidad:");
 		cantidad.setPrefWidth(150.0);
 		TextField campoCantidad = new TextField("Cantidad");
 		campoCantidad.setPrefWidth(150.0);
-		
+
 		Label precio = new Label("Precio:");
 		precio.setPrefWidth(150.0);
 		TextField campoPrecio = new TextField("Precio");
 		campoPrecio.setPrefWidth(150.0);
-		
+
 		Button aceptar = new Button("Aceptar");
 		aceptar.setPadding(new Insets(10.0, 10.0, 10.0, 10.0));
 		aceptar.setAlignment(Pos.BOTTOM_LEFT);
 		aceptar.setOnAction(e -> {
-			Gestion.anadirProducto(campoNombre.getText(), Integer.parseInt(campoCantidad.getText()), Float.parseFloat(campoPrecio.getText()));
+			Gestion.anadirProducto(campoNombre.getText(), Integer.parseInt(campoCantidad.getText()),
+					Float.parseFloat(campoPrecio.getText()));
 			this.primaryStage.setScene(setupMainScene());
 		});
 		root.getChildren().add(aceptar);
@@ -208,9 +209,10 @@ public class GraphicIO extends Application implements Interfaz {
 		Scene scene = new Scene(root, 820, 360);
 		return scene;
 	}
-	
+
 	/**
-	 * Método anadirProductoScene. Muestra el menú para añadir productos desde los favoritos.
+	 * Método anadirProductoScene. Muestra el menú para añadir productos desde los
+	 * favoritos.
 	 * 
 	 * @param nombre
 	 * @return scene
@@ -219,32 +221,33 @@ public class GraphicIO extends Application implements Interfaz {
 		VBox root = new VBox();
 		root.setSpacing(10.0);
 		root.setPadding(new Insets(10.0, 10.0, 10.0, 10.0));
-		
+
 		HBox textForm = new HBox();
 		textForm.setSpacing(10.0);
 		textForm.setPadding(new Insets(10.0, 10.0, 10.0, 10.0));
 		textForm.setAlignment(Pos.CENTER_LEFT);
-		
-		if(!nombres.contains(nombre)) {
+
+		if (!nombres.contains(nombre)) {
 			Label cantidad = new Label("Cantidad:");
 			cantidad.setPrefWidth(150.0);
 			TextField campoCantidad = new TextField("Cantidad");
 			campoCantidad.setPrefWidth(150.0);
-			
+
 			Label precio = new Label("Precio:");
 			precio.setPrefWidth(150.0);
 			TextField campoPrecio = new TextField("Precio");
 			campoPrecio.setPrefWidth(150.0);
-	
+
 			textForm.getChildren().addAll(cantidad, campoCantidad);
 			textForm.getChildren().addAll(precio, campoPrecio);
 			root.getChildren().addAll(textForm);
-			
+
 			Button aceptar = new Button("Aceptar");
 			aceptar.setPadding(new Insets(10.0, 10.0, 10.0, 10.0));
 			aceptar.setAlignment(Pos.BOTTOM_LEFT);
 			aceptar.setOnAction(e -> {
-				Gestion.anadirProducto(nombre, Integer.parseInt(campoCantidad.getText()), Float.parseFloat(campoPrecio.getText()));
+				Gestion.anadirProducto(nombre, Integer.parseInt(campoCantidad.getText()),
+						Float.parseFloat(campoPrecio.getText()));
 				this.primaryStage.setScene(setupMainScene());
 			});
 			root.getChildren().add(aceptar);
@@ -253,7 +256,7 @@ public class GraphicIO extends Application implements Interfaz {
 			productoExistente.setPrefWidth(150.0);
 			textForm.getChildren().addAll(productoExistente);
 		}
-		
+
 		Button volver = new Button("Volver");
 		volver.setPadding(new Insets(10.0, 10.0, 10.0, 10.0));
 		volver.setAlignment(Pos.BOTTOM_RIGHT);
@@ -360,7 +363,8 @@ public class GraphicIO extends Application implements Interfaz {
 	}
 
 	/**
-	 * Método modificarCantidadScene. Muestra el menú para introducir la nueva cantidad del producto.
+	 * Método modificarCantidadScene. Muestra el menú para introducir la nueva
+	 * cantidad del producto.
 	 * 
 	 * @param nombre
 	 * @return scene
@@ -445,9 +449,10 @@ public class GraphicIO extends Application implements Interfaz {
 		Scene scene = new Scene(root, 820, 360);
 		return scene;
 	}
-	
+
 	/**
-	 * Método marcarFavorito. Muestra el menú para poder marcar un producto como favorito.
+	 * Método marcarFavorito. Muestra el menú para poder marcar un producto como
+	 * favorito.
 	 * 
 	 * @return scene
 	 */
@@ -460,7 +465,7 @@ public class GraphicIO extends Application implements Interfaz {
 		textForm.setSpacing(10.0);
 		textForm.setPadding(new Insets(10.0, 10.0, 10.0, 10.0));
 		textForm.setAlignment(Pos.CENTER_LEFT);
-		
+
 		Label fieldLabel = new Label("Marcar:");
 		fieldLabel.setPrefWidth(150.0);
 		textForm.getChildren().addAll(fieldLabel);
@@ -482,12 +487,12 @@ public class GraphicIO extends Application implements Interfaz {
 			noProductos.setPrefWidth(150.0);
 			textForm.getChildren().addAll(noProductos);
 		}
-		
+
 		Button volver = new Button("Volver");
 		volver.setPadding(new Insets(10.0, 10.0, 10.0, 10.0));
 		volver.setAlignment(Pos.BOTTOM_RIGHT);
 		volver.setOnAction(e -> this.primaryStage.setScene(setupMainScene()));
-		
+
 		root.getChildren().addAll(textForm);
 		root.getChildren().add(volver);
 		Scene scene = new Scene(root, 820, 360);

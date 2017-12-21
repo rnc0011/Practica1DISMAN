@@ -15,17 +15,17 @@ import java.util.List;
  * @version 1.0
  */
 public class ListaFavoritos implements Iterable<String> {
-	
-	//Declaración de variables
+
+	// Declaración de variables
 	private List<String> miLista;
-	
+
 	/**
 	 * Constructor de la clase.
 	 */
 	public ListaFavoritos() {
 		this.miLista = new ArrayList<String>();
 	}
-	
+
 	/**
 	 * Método anadir. Añade productos a la lista de la compra.
 	 * 
@@ -34,9 +34,9 @@ public class ListaFavoritos implements Iterable<String> {
 	public void anadir(String nombre) {
 		if (!this.miLista.contains(nombre)) {
 			this.miLista.add(nombre);
-		}else {
+		} else {
 			System.out.println("El producto ya estaba marcado como favorito");
-		}		
+		}
 	}
 
 	/**
@@ -44,19 +44,20 @@ public class ListaFavoritos implements Iterable<String> {
 	 * 
 	 * @param producto
 	 */
-	
+
 	public String getProducto(int index) {
 		return this.miLista.get(index);
 	}
-	
+
 	/**
-	 * Método contiene. Comprueba si la lista de favoritos contiene un producto determinado.
+	 * Método contiene. Comprueba si la lista de favoritos contiene un producto
+	 * determinado.
 	 * 
 	 * @param nombre
 	 * @return true o false
 	 */
 	public boolean contiene(String nombre) {
-		if(this.miLista.contains(nombre)) {
+		if (this.miLista.contains(nombre)) {
 			return true;
 		} else {
 			return false;
@@ -76,5 +77,5 @@ public class ListaFavoritos implements Iterable<String> {
 	public int size() {
 		return this.miLista.size();
 	}
-	
+
 }

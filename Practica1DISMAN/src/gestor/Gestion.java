@@ -45,15 +45,15 @@ public class Gestion {
 		while (it.hasNext()) {
 			nombresProducto.add(it.next().getNombre());
 		}
-		
+
 		System.out.println("Elije el tipo de interfaz que quieres utilizar:");
 		System.out.println("1.- Interfaz modo texto.");
 		System.out.println("2.- Interfaz modo grafico.");
-		
+
 		Scanner entrada = new Scanner(System.in);
 		String opcion = entrada.nextLine();
-		
-		switch(opcion) {
+
+		switch (opcion) {
 		case "1":
 			interfaz = new TextIO();
 			break;
@@ -101,8 +101,8 @@ public class Gestion {
 	}
 
 	/**
-	 * Método modificarCantidad. Modifica la cantidad de un producto elegido por
-	 * el usuario.
+	 * Método modificarCantidad. Modifica la cantidad de un producto elegido por el
+	 * usuario.
 	 * 
 	 * @param nombreProducto
 	 * @param cantidad
@@ -152,7 +152,7 @@ public class Gestion {
 	public static ListaCompra devolverLista() {
 		return listaProductos;
 	}
-	
+
 	/**
 	 * Método devolverNombres(). Devuelve la lista con los nombres de los productos.
 	 * 
@@ -161,7 +161,7 @@ public class Gestion {
 	public static List<String> devolverNombres() {
 		return nombresProducto;
 	}
-	
+
 	/**
 	 * Método devolverFavoritos(). Devuelve la lista de favoritos.
 	 * 
@@ -172,15 +172,17 @@ public class Gestion {
 	}
 
 	/**
-	 * Método guardarLista. Guarda la lista de la compra y de favoritos en dos archivos csv.
+	 * Método guardarLista. Guarda la lista de la compra y de favoritos en dos
+	 * archivos csv.
 	 */
 	public static void guardarLista() {
 		persistencia.exportar(listaProductos);
 		persistencia.exportar(listaFavoritos);
 	}
-	
+
 	/**
-	 * Método marcarFavorito. Guarda en la lista de favoritos los productos elegidos por el usuario.
+	 * Método marcarFavorito. Guarda en la lista de favoritos los productos elegidos
+	 * por el usuario.
 	 */
 	public static void marcarFavorito(String nombre) {
 		listaFavoritos.anadir(nombre);

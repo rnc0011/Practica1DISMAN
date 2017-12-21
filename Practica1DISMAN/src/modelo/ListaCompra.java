@@ -12,17 +12,17 @@ import java.util.List;
  * @version 1.0
  */
 public class ListaCompra implements Iterable<Producto> {
-	
-	//Declaración de variables
+
+	// Declaración de variables
 	private List<Producto> miLista;
-	
+
 	/**
 	 * Constructor de la clase.
 	 */
 	public ListaCompra() {
 		this.miLista = new ArrayList<Producto>();
 	}
-	
+
 	/**
 	 * Método añadir. Añade productos a la lista de la compra.
 	 * 
@@ -31,14 +31,14 @@ public class ListaCompra implements Iterable<Producto> {
 	public void anadir(Producto producto) {
 		this.miLista.add(producto);
 	}
-	
+
 	/**
 	 * Método eliminar. Elimina productos de la lista de la compra.
 	 * 
 	 * @param producto
 	 */
 	public void eliminar(Producto producto) {
-		if(miLista.size() != 0) {
+		if (miLista.size() != 0) {
 			this.miLista.remove(producto);
 		}
 	}
@@ -47,7 +47,7 @@ public class ListaCompra implements Iterable<Producto> {
 	public Iterator<Producto> iterator() {
 		return this.miLista.iterator();
 	}
-	
+
 	/**
 	 * Método size. Devuelve el tamaño de la lista de la compra.
 	 * 
@@ -56,5 +56,5 @@ public class ListaCompra implements Iterable<Producto> {
 	public int size() {
 		return this.miLista.size();
 	}
-	
+
 }
