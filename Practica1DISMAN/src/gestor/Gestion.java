@@ -10,6 +10,7 @@ import interfaz.GraphicIO;
 import interfaz.Interfaz;
 import interfaz.TextIO;
 import modelo.ListaCompra;
+import modelo.ListaFavoritos;
 import modelo.Producto;
 import persistencia.Persistencia;
 import persistencia.PersistenciaCSV;
@@ -26,6 +27,7 @@ public class Gestion {
 	// Declaración de variables
 	private static List<String> nombresProducto = new ArrayList<String>();
 	private static ListaCompra listaProductos = new ListaCompra();
+	private static ListaFavoritos listaFavoritos = new ListaFavoritos();
 	private static Persistencia persistencia = new PersistenciaCSV();
 	private static Interfaz interfaz;
 
@@ -37,6 +39,7 @@ public class Gestion {
 	public static void main(String[] args) {
 
 		persistencia.importar(listaProductos);
+		persistencia.importar(listaFavoritos);
 		Iterator<Producto> it = listaProductos.iterator();
 
 		while (it.hasNext()) {
@@ -158,12 +161,29 @@ public class Gestion {
 	public static List<String> devolverNombres() {
 		return nombresProducto;
 	}
+	
+	/**
+	 * Método devolverFavoritos(). Devuelve la lista de favoritos.
+	 * 
+	 * @return listaFavoritos
+	 */
+	public static ListaFavoritos devolverFavoritos() {
+		return listaFavoritos;
+	}
 
 	/**
-	 * Método guardarLista. Guarda la lista de la compra en un archivo csv.
+	 * Método guardarLista. Guarda la lista de la compra y de favoritos en dos archivos csv.
 	 */
 	public static void guardarLista() {
 		persistencia.exportar(listaProductos);
+		persistencia.exportar(listaFavoritos);
+	}
+	
+	/**
+	 * Método marcarFavorito. Guarda en la lista de favoritos los productos elegidos por el usuario.
+	 */
+	public static void marcarFavorito(String nombre) {
+		listaFavoritos.anadir(nombre);
 	}
 
 }

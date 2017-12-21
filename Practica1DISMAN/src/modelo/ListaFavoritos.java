@@ -29,26 +29,14 @@ public class ListaFavoritos implements Iterable<String> {
 	/**
 	 * Método anadir. Añade productos a la lista de la compra.
 	 * 
-	 * @param producto
+	 * @param nombre
 	 */
-	public void anadir(Producto producto) {
-		if (this.miLista.contains(producto.getNombre())) {
-			this.miLista.add(producto.getNombre());
+	public void anadir(String nombre) {
+		if (!this.miLista.contains(nombre)) {
+			this.miLista.add(nombre);
 		}else {
 			System.out.println("El producto ya estaba marcado como favorito");
-		}
-		
-	}
-	
-	/**
-	 * Método eliminar. Elimina productos de la lista de la compra.
-	 * 
-	 * @param producto
-	 */
-	public void eliminar(Producto producto) {
-		if(miLista.size() != 0) {
-			this.miLista.remove(producto.getNombre());
-		}
+		}		
 	}
 
 	/**
@@ -60,10 +48,33 @@ public class ListaFavoritos implements Iterable<String> {
 	public String getProducto(int index) {
 		return this.miLista.get(index);
 	}
+	
+	/**
+	 * Método contiene. Comprueba si la lista de favoritos contiene un producto determinado.
+	 * 
+	 * @param nombre
+	 * @return true o false
+	 */
+	public boolean contiene(String nombre) {
+		if(this.miLista.contains(nombre)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 
 	@Override
-	public Iterator iterator() {
+	public Iterator<String> iterator() {
 		return this.miLista.iterator();
+	}
+
+	/**
+	 * Método size. Devuelve el tamaño de la lista de favoritos.
+	 * 
+	 * @return tamaño
+	 */
+	public int size() {
+		return this.miLista.size();
 	}
 	
 }

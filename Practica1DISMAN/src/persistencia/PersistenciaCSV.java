@@ -13,6 +13,7 @@ import com.csvreader.CsvReader;
 import com.csvreader.CsvWriter;
 
 import modelo.ListaCompra;
+import modelo.ListaFavoritos;
 import modelo.Producto;
 
 /**
@@ -24,26 +25,26 @@ import modelo.Producto;
  */
 public class PersistenciaCSV implements Persistencia{
 	
-	static String direccion = "Lista.csv";
+	static String direccionCompra = "ListaCompra.csv";
+	static String direccionFavoritos = "ListaFavoritos.csv";
 
 	/**
 	 * Método exportar. Guarda la lista de la compra en un archivo csv.
 	 * 
 	 * @param listaCompra
 	 */
-	@Override
 	public void exportar(ListaCompra listaCompra){
 		
-		boolean existe = new File(direccion).exists();
+		boolean existe = new File(direccionCompra).exists();
 		
 		if(existe) {
-			File Lista = new File(direccion);
+			File Lista = new File(direccionCompra);
 			Lista.delete();
 		}
 		
 		try {
 			
-			CsvWriter csvWriter = new CsvWriter(new FileWriter(direccion, true), ',');
+			CsvWriter csvWriter = new CsvWriter(new FileWriter(direccionCompra, true), ',');
 			Iterator<Producto> it = listaCompra.iterator();
 			Producto producto = null;
 			
@@ -67,16 +68,15 @@ public class PersistenciaCSV implements Persistencia{
 	 * 
 	 * @param listaCompra
 	 */
-	@Override
 	public void importar(ListaCompra listaCompra) {
 	
-		boolean existe = new File(direccion).exists();
+		boolean existe = new File(direccionCompra).exists();
 
 		if(existe) {
 			
 			try {
 				
-				CsvReader fichero = new CsvReader(direccion);
+				CsvReader fichero = new CsvReader(direccionCompra);
 				
 				while(fichero.readRecord()) {
 					String nombre = fichero.get(0);
@@ -84,6 +84,68 @@ public class PersistenciaCSV implements Persistencia{
 					String precio = fichero.get(2);
 					Producto producto = new Producto(nombre, Integer.parseInt(cantidad), Float.parseFloat(precio));
 					listaCompra.anadir(producto);
+				}
+				
+				fichero.close();
+				
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		
+		}
+	}
+	
+	/**
+	 * Método exportar. Guarda la lista de la compra en un archivo csv.
+	 * 
+	 * @param listaCompra
+	 */
+	public void exportar(ListaFavoritos listaFavoritos){
+		
+		boolean existe = new File(direccionFavoritos).exists();
+		
+		if(existe) {
+			File Lista = new File(direccionFavoritos);
+			Lista.delete();
+		}
+		
+		try {
+			
+			CsvWriter csvWriter = new CsvWriter(new FileWriter(direccionFavoritos, true), ',');
+			Iterator<String> it = listaFavoritos.iterator();
+			
+			while(it.hasNext()) {
+				csvWriter.write(it.next());
+				csvWriter.endRecord();
+			}
+			
+			csvWriter.close();	
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * Método importar. Guarda el contenido del fichero csv en la lista de la compra.
+	 * 
+	 * @param listaCompra
+	 */
+	public void importar(ListaFavoritos listaFavoritos) {
+	
+		boolean existe = new File(direccionFavoritos).exists();
+
+		if(existe) {
+			
+			try {
+				
+				CsvReader fichero = new CsvReader(direccionFavoritos);
+				
+				while(fichero.readRecord()) {
+					String nombre = fichero.get(0);
+					listaFavoritos.anadir(nombre);
 				}
 				
 				fichero.close();

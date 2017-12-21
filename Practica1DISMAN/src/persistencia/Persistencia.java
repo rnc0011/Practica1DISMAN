@@ -4,6 +4,7 @@
 package persistencia;
 
 import modelo.ListaCompra;
+import modelo.ListaFavoritos;
 
 /**
  * Clase Persistencia. Interfaz que hace la tarea de una "fachada" para utilizar los diferentes modelos de persistencia.
@@ -28,5 +29,20 @@ public interface Persistencia {
 	 * @param listaCompra
 	 */
 	public void exportar(ListaCompra listaCompra);
+
+	/**
+	 * Método importar. Este metodo, comprobara si ya hay un fichero de datos 
+	 * y en caso de haberlo, recuperara los datos y los volcara en la lista de favoritos pasada por parametro.
+	 * 
+	 * @param listaFavoritos
+	 */
+	public void exportar(ListaFavoritos listaFavoritos);
+
+	/**
+	 * Método exportar. Este metodo debera guardar la lista de favoritos en un archivo csv.
+	 * 
+	 * @param listaFavoritos
+	 */
+	public void importar(ListaFavoritos listaFavoritos);
 	
 }
