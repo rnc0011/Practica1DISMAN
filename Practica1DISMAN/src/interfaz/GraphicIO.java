@@ -15,6 +15,8 @@ import gestor.Gestion;
 import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.stage.Stage;
 import modelo.ListaCompra;
 import modelo.Producto;
@@ -126,10 +128,16 @@ public class GraphicIO extends Application implements Interfaz{
 		if(nombres.size() != 0) {
 			Iterator<String> it = nombres.iterator();
 			while(it.hasNext()) {
-				RadioButton boton = new RadioButton(it.next());
+				String nombre = it.next();
+				RadioButton boton = new RadioButton(nombre);
 				boton.setPadding(new Insets(10.0, 10.0, 10.0, 10.0));
 				textForm.getChildren().add(boton);
-				// si pinchas sobre el producto, tiene que eliminarse
+				boton.setOnAction(new EventHandler<ActionEvent>() {
+					@Override
+					public void handle(ActionEvent event) {
+						Gestion.eliminarProducto(nombre);
+					}
+				});
 			}
 		} else {
 			Label noProductos = new Label("No hay productos.");
