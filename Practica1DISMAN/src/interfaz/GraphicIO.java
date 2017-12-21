@@ -498,5 +498,4 @@ public class GraphicIO extends Application implements Interfaz {
 		Scene scene = new Scene(root, 820, 360);
 		return scene;
 	}
-
 }
